@@ -8,6 +8,8 @@ import torch.onnx
 import torch.nn as nn
 import torch.nn.init as init
 
+from torchstat import stat
+
 
 class SuperResolutionNet(nn.Module):
     def __init__(self, upscale_factor, inplace=False):
@@ -53,6 +55,7 @@ torch_model.eval()
 
 # Input to the model
 x = torch.randn(batch_size, 1, 224, 224, requires_grad=True)
+stat(torch_model, (1, 224, 224))
 torch_out = torch_model(x)
 
 # Export the model
