@@ -1,6 +1,6 @@
 #pragma once
 
-#include "basis.hpp"
+#include "ort_deploy_helper.hpp"
 
 namespace Ort {
 class OrtDeploy {
