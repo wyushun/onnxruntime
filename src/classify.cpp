@@ -7,7 +7,7 @@ Classify::Classify(int numClasses,           //
                    const optional<vector<vector<int64_t>>>& inputShapes)
     : ImageRecog(numClasses, modelPath, gpuIdx, inputShapes) {}
 
-vector<pair<int, float>> Classify::topK(
+vector<pair<int, float>> Classify::topk(
     const vector<float*>& inferenceOutput,  //
     int k,                                  //
     bool useSoftmax) const {
@@ -33,10 +33,10 @@ vector<pair<int, float>> Classify::topK(
   return vector<pair<int, float>>(ps.begin(), ps.begin() + realK);
 }
 
-string Classify::topKToString(const vector<float*>& inferenceOutput,  //
-                              int k,                                  //
-                              bool useSoftmax) const {
-  auto ps = this->topK(inferenceOutput, k, useSoftmax);
+string Classify::topk2Str(const vector<float*>& inferenceOutput,  //
+                          int k,                                  //
+                          bool useSoftmax) const {
+  auto ps = topk(inferenceOutput, k, useSoftmax);
 
   stringstream ss;
 

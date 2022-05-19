@@ -1,6 +1,8 @@
 # -------------------------------------------------------------------
 # build targets according to test file's name
 # -------------------------------------------------------------------
+find_package(OpenCV REQUIRED)
+
 aux_source_directory(. SRCS)
 message(STATUS "${CMAKE_CURRENT_SOURCE_DIR} SRCS: ${SRCS}")
 foreach(F ${SRCS})
@@ -13,6 +15,6 @@ foreach(F ${SRCS})
   target_include_directories(${ELF} PRIVATE ${INC_DIR})
   target_compile_features(${ELF} PRIVATE cxx_std_11)
   target_compile_options(${ELF} PRIVATE -Wall -Werror)
-  target_link_libraries(${ELF} PUBLIC ort_deploy)
+  target_link_libraries(${ELF} PUBLIC ort_deploy ${OpenCV_LIBS})
 endforeach()
 

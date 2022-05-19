@@ -12,12 +12,12 @@ class Classify : public ImageRecog {
 
   ~Classify() = default;
 
-  vector<pair<int, float>> topK(const vector<float*>& inferenceOutput,  //
+  vector<pair<int, float>> topk(const vector<float*>& inferenceOutput,  //
                                 int k = 1,                              //
                                 bool useSoftmax = true) const;
 
-  string topKToString(const vector<float*>& inferenceOutput,  //
-                      int k = 1,                              //
-                      bool useSoftmax = true) const;
+  string topk2Str(const vector<float*>& inferenceOutput,  //
+                  int k = 1,                              //
+                  bool useSoftmax = true) const;
 };
 }  // namespace Ort
